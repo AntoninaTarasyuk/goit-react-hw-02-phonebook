@@ -5,3 +5,4 @@ export const STitle = styled.h2`
   font-size: ${p => p.theme.fontSizes.l};
   color: ${p => p.theme.colors.primary};
   margin-bottom: ${p => p.theme.space[4]}px;
+  `
