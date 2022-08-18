@@ -4,11 +4,12 @@ export const theme = {
     white: '#fff',
     text: '#2a2a2a',
     background: '#fff',
-    primary: '#0161a5',
+    primary: '#0369b3',
     secondary: '#023b74',
     accent: '#609',
     muted: '#f6f6f6',
     green: '#039671',
+    redAccent: '#c93c5f',
   },
   space: [0, 2, 4, 8, 16, 32, 64, 128, 256],
   fonts: {
