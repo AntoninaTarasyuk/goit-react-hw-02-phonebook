@@ -32,8 +32,9 @@ const Input = styled(Field)`
 `
 
 const schema = yup.object().shape({
-  name: yup.string().required(),
-  number: yup.string().phone().required(),
+  name: yup.string().matches("[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$", { message: "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan" }).required(),
+  // number: yup.string().phone().required(), // пропускає лише Українські номери (+380)
+  number: yup.string().required(),
 });
 
 export const ContactsForm = ({ handleFormSubmit }) => {
@@ -54,7 +55,13 @@ export const ContactsForm = ({ handleFormSubmit }) => {
         </Box>
         <Box as="label" display="flex" flexDirection="column">
           Number
-          <Input type="tel" name="number" placeholder="Enter number like +38011 111 11 11" />
+          <Input
+            type="tel"
+            name="number"
+            placeholder="Enter number like +38011 111 11 11"
+            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+          />
           <ErrorStyled name="number" component="p" />
         </Box>
         <Btn type="submit" name="addContact">
